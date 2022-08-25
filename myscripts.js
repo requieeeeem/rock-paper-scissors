@@ -2,10 +2,10 @@ let computerSelection = getComputerChoice();
 let playerSelection
 let winCounter = 0;
 let compWinCounter = 0;
-const radioButtons = document.querySelectorAll('input[name="choice"]');
-const btn = document.querySelector('#startButton');
+const radioButtons = document.querySelectorAll('input[name="choice"]'); //Group all radio buttons to one variable
+const btn = document.querySelector('#startButton'); //Make start button a variable
 
-btn.addEventListener('click', () => {
+btn.addEventListener('click', () => { //When start button is clicked, do the following things
     for (const radioButton of radioButtons) {
         if (radioButton.checked) {
             playerSelection = radioButton.value;
@@ -16,7 +16,7 @@ btn.addEventListener('click', () => {
     }
 })
 
-function getComputerChoice() { //Randomize a computer's choice
+function getComputerChoice() { //Randomize a computer's choice by using array random
     let random =['Rock', 'Paper', 'Scissors'];
     let temp = Math.floor(Math.random()*3);
     switch(temp) {
@@ -31,7 +31,7 @@ function getComputerChoice() { //Randomize a computer's choice
             break;
     }
 }
-function playRound(playerSelection, computerSelection) { //Play RPS
+function playRound(playerSelection, computerSelection) { //Compare player's choice with comp's choice, then update the Win counter, print out if you win or lose
     let result = ""
     
     if (playerSelection === 'Rock') {
@@ -79,7 +79,7 @@ function playRound(playerSelection, computerSelection) { //Play RPS
                 break;
         }
     }
-    document.getElementById("playerCounter").innerHTML = winCounter
+    document.getElementById("playerCounter").innerHTML = winCounter //change innerHTML of playerCounter
     document.getElementById("compCounter").innerHTML = compWinCounter
     document.getElementById("result").innerHTML = result
     if (winCounter==5) {
